@@ -1,0 +1,88 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model HrUser.Models.LoginView
+@{
+    ViewData["Title"] = "EXIGOTECH-Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a href="#" class="logo" target="_blank">
+    <img src="~/Content/Images/Exigotech-Logo-icon1.png" alt="">
+</a>
+
+<div class="section">
+    <div class="container">
+        <div class="row full-height justify-content-center">
+            <div class="col-12 text-center align-self-center py-5">
+                <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                    <h6 class="mb-0 pb-3"><span>User</span><span>Admin</span></h6>
+                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                    <label for="reg-log"></label>
+                    <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                            <div class="card-front" style="background-color:#4268D6;">
+                                 <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-4 pb-3">USER</h4>
+                                        <form asp-controller="Home" asp-action="Login" method="post">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="form-group">
+                                                <input asp-for="Email" class="form-style" placeholder="Your EmailID"/>
+                                                <i class="input-icon uil uil-at"></i>
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input asp-for="Password" class="form-style"  ID="txtPassword"  placeholder="Your Password" autocomplete="off"/>
+                                                <i class="input-icon uil uil-lock-alt"></i>
+                                                <span asp-validation-for="Password" class="text-danger"></span>
+                                            </div>
+                                            <button type="submit" class="btn mt-4" asp-action="Dash">Login</button>
+                                            <p class="mb-0 mt-4 text-center"><a asp-action="forgetpassword" asp-controller="Home" asp-area="" class="link">Forgot your password?</a></p>
+                                    </form>
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="card-back" style="background-color:#4268D6 ;">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-4 pb-3">ADMIN</h4>
+                                         <form asp-controller="Home" asp-action="Login" method="post">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="form-group">
+                                                <input asp-for="Email" class="form-style" placeholder="Your EmailID" autocomplete="off"/>
+                                                <i class="input-icon uil uil-at"></i>
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input asp-for="Password" class="form-style" placeholder="Your Password" autocomplete="off"/>
+                                                <i class="input-icon uil uil-lock-alt"></i>
+                                                <span asp-validation-for="Password" class="text-danger"></span>
+                                            </div>
+                                            <button type="submit" class="btn mt-4" asp-action="Dash">Login</button>
+                                            <p class="mb-0 mt-4 text-center"><a asp-action="forgetpassword" asp-controller="Home" asp-area="" class="link">Forgot your password?</a></p>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#toggle_pwd").click(function () {
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                var type = $(this).hasClass("fa-eye-slash") ? "text" : "password";
+                $("#txtPassword").attr("type", type);
+            });
+        });
+    </script>
